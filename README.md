@@ -338,6 +338,141 @@ DEEPGRAM_API_KEY=your_deepgram_api_key_here
    - Create free cluster
    - Get connection string
 
+## Getting Started
+
+### Prerequisites
+- Node.js (v16+)
+- npm or yarn
+- Git
+- A free Murf API key
+- A free Deepgram or AssemblyAI API key
+- A free Gemini API key
+- MongoDB Atlas account
+
+### Installation & Setup
+
+#### 1. Clone Repository
+```bash
+git clone <repository-url>
+cd prostent
+```
+
+#### 2. Set Up Environment Variables
+
+**Backend (.env)**
+```bash
+# Copy the template
+cp .env.example .env
+
+# Edit with your API keys
+nano .env
+```
+
+**Frontend (.env)**
+```bash
+cp frontend/.env.example frontend/.env
+```
+
+#### 3. Install Dependencies
+
+**Backend:**
+```bash
+cd backend
+npm install
+```
+
+**Frontend:**
+```bash
+cd frontend
+npm install
+```
+
+#### 4. Start Development Servers
+
+**Terminal 1 - Backend:**
+```bash
+cd backend
+npm start
+# Server runs on http://localhost:3000
+```
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm run dev
+# App runs on http://localhost:5173
+```
+
+### Quick Start - Voice Interaction Flow
+
+1. **Open the application** in browser (http://localhost:5173)
+2. **Click the microphone button** to start listening
+3. **Speak your query** (e.g., "What's the weather?")
+4. **System processes**: ASR converts voice to text
+5. **AI generates response** using Gemini API
+6. **TTS synthesizes response** using Murf Falcon
+7. **Hear the response** in real-time audio
+
+### Testing the Voice Pipeline
+
+```bash
+# Test backend health
+curl http://localhost:3000/health
+
+# Test voice endpoint (requires audio file)
+curl -X POST http://localhost:3000/api/voice/process \
+  -H "Content-Type: application/json" \
+  -d '{"audioText": "Hello, how are you?"}'
+```
+
+### Troubleshooting
+
+**"Murf API key not found"**
+- Check MURF_API_KEY in backend .env
+- Verify key is valid from dashboard
+
+**"Deepgram connection failed"**
+- Check DEEPGRAM_API_KEY in backend .env
+- Ensure internet connectivity
+
+**"No audio output"**
+- Check browser microphone permissions
+- Verify speaker volume
+- Check browser console for errors
+
+**"Slow response time"**
+- Check API rate limits
+- Verify database connection
+- Check network latency
+
+## Hackathon Requirements Checklist
+
+✅ **Conversational AI Application**
+- Users can speak natural language queries
+- System receives spoken input via ASR
+- Real-time processing of voice input
+
+✅ **ASR Integration**
+- Deepgram API integrated for speech-to-text
+- AssemblyAI as alternative option
+- Free credits available for participants
+
+✅ **Real-time Speech Generation**
+- Murf Falcon TTS for production-grade synthesis
+- Real-time audio streaming to user
+- Natural, human-like voice output
+
+✅ **Secure API Key Management**
+- All keys stored in environment variables
+- No hardcoded credentials in source code
+- .env files for local development
+- Environment-based configuration
+
+✅ **Interactive Voice Experience**
+- Low-latency processing (<2 seconds end-to-end)
+- Natural conversation flow
+- Error handling and fallbacks
+
 ## Comprehensive Benchmarking Results
 
 ### Response Time Benchmarks
