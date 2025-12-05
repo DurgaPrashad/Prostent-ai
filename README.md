@@ -32,6 +32,7 @@ Prostent demonstrates a practical implementation where users can speak natural l
 - **Real-time Text-to-Speech** - Murf Falcon TTS for natural, production-grade voice synthesis
 - **Low-Latency Voice Pipeline** - End-to-end processing optimized for interactive experiences
 - **Natural Voice Output** - Multiple voice options via Murf Falcon with customizable parameters
+<img width="350" height="345" alt="image" src="https://github.com/user-attachments/assets/f3bf8d17-3881-4dd9-83bb-95ce85fc8fe2" />
 
 ### Conversational AI
 - **Context-Aware Responses** - Conversation memory and semantic understanding
@@ -659,3 +660,4 @@ The Python AI service includes advanced data visualization capabilities:
 - Version control with Git
 - Backward compatibility assurance
 - Regular security patches#
+
