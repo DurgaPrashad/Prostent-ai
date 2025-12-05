@@ -27,39 +27,85 @@ Prostent demonstrates a practical implementation where users can speak natural l
 
 ## Key Features
 
-- **Real-time AI-powered voice support** using Murf Falcon TTS, accessible 24/7 on multiple platforms
-- **Advanced sentiment analysis** to detect customer emotions and automatically escalate urgent cases
-- **Deep integration with CRM and service workflows** for automated ticketing and appointment scheduling
-- **Personalized, context-aware responses** using specific vehicle details and customer history
-- **Proactive automated service reminders** and status updates
-- **Omnichannel support** across chat, email, WhatsApp, mobile app, and social media
-- **Intelligent automated categorization** and smart routing of queries
-- **Comprehensive self-service portal** with AI-powered knowledge base
-- **Analytics dashboard** for real-time performance tracking
-- **Machine learning-powered continuous improvement**
-- **Data visualization and graph generation** for better insights
-- **Text-to-speech capabilities** for voice responses
-- **Speech recognition** for voice input
+### Voice Processing Core
+- **Automatic Speech Recognition (ASR)** - Deepgram API for real-time speech-to-text conversion
+- **Real-time Text-to-Speech** - Murf Falcon TTS for natural, production-grade voice synthesis
+- **Low-Latency Voice Pipeline** - End-to-end processing optimized for interactive experiences
+- **Natural Voice Output** - Multiple voice options via Murf Falcon with customizable parameters
+
+### Conversational AI
+- **Context-Aware Responses** - Conversation memory and semantic understanding
+- **Advanced Sentiment Analysis** - Detects user emotions and adjusts responses empathetically
+- **Intelligent Query Understanding** - NLP via Google Gemini for complex user intents
+- **Multi-turn Conversations** - Maintains conversation history for coherent interactions
+
+### Security & Compliance
+- **Secure API Key Management** - All credentials via environment variables, never hardcoded
+- **Input Validation** - Voice and text inputs validated before processing
+- **Privacy-First Design** - No unnecessary data retention beyond conversation session
+- **Rate Limiting** - Protects against abuse while respecting free tier limits
+
+### Developer Experience
+- **Easy Integration** - Simple REST API endpoints for voice interactions
+- **Environment Configuration** - Straightforward .env setup for all API keys
+- **Error Handling** - Graceful fallbacks for API failures
+- **Logging & Monitoring** - Comprehensive logs for debugging and performance tracking
 
 ## Architecture Overview
 
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend      │    │   Backend       │    │   AI Services   │
-│   (React/Vite)  │◄──►│   (Node.js)     │◄──►│(Python/FastAPI) │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-       │                       │                       │
-       ▼                       ▼                       ▼
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Vercel        │    │   MongoDB       │    │   Google AI     │
-│   Deployment    │    │   Database      │    │   Services      │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-                                                  │
-                                         ┌─────────────────┐
-                                         │  ElevenLabs API │
-                                         │   (TTS)         │
-                                         └─────────────────┘
+┌──────────────────────────────────────────────────────────────────┐
+│                    Voice-First Application                        │
+│                   (React Frontend with Vite)                      │
+└──────────────────┬───────────────────────────────────────────────┘
+                   │
+        ┌──────────┴──────────┐
+        │                     │
+        ▼                     ▼
+   ┌─────────────┐    ┌─────────────────┐
+   │   ASR Flow  │    │   TTS Flow      │
+   └─────────────┘    └─────────────────┘
+        │                     │
+        ▼                     ▼
+   ┌─────────────────────┐  ┌──────────────────┐
+   │ Deepgram/AssemblyAI │  │ Murf Falcon TTS  │
+   │  (Speech-to-Text)   │  │ (Real-time voice)│
+   └──────────┬──────────┘  └────────┬─────────┘
+              │                      ▲
+              │                      │
+              ▼                      │
+   ┌──────────────────────────────────────────────┐
+   │      Backend API (Node.js/Express)            │
+   │   - Request processing                       │
+   │   - API orchestration                        │
+   │   - Security & validation                    │
+   └──────────────────┬───────────────────────────┘
+                      │
+        ┌─────────────┼─────────────┐
+        │             │             │
+        ▼             ▼             ▼
+   ┌─────────┐  ┌──────────┐  ┌──────────────┐
+   │ Gemini  │  │ MongoDB  │  │ Environment  │
+   │  API    │  │Database  │  │ Variables    │
+   └─────────┘  └──────────┘  └──────────────┘
+        │
+        ▼
+   ┌─────────────────────┐
+   │ NLP & Understanding │
+   │ Sentiment Analysis  │
+   └─────────────────────┘
 ```
+
+### Voice Processing Pipeline
+
+**User Speaking → ASR Processing → NLP Understanding → Response Generation → TTS Synthesis → Audio Output**
+
+1. **Input**: User speaks into microphone
+2. **Speech Recognition**: ASR converts voice to text (Deepgram/AssemblyAI)
+3. **Processing**: Backend API receives text, validates input
+4. **NLP**: Gemini API understands intent and generates response
+5. **Synthesis**: Murf Falcon TTS converts response text to speech
+6. **Output**: Real-time audio playback to user
 
 ## Programming Languages & Technologies
 
@@ -68,76 +114,92 @@ Prostent demonstrates a practical implementation where users can speak natural l
 - **Build Tool**: Vite
 - **UI Library**: shadcn-ui with Tailwind CSS
 - **State Management**: React Hooks
-- **Routing**: React Router
-- **Animations**: Framer Motion
-- **3D Graphics**: Three.js with React Three Fiber
-- **Data Visualization**: Recharts
-- **API Client**: Fetch API
+- **Voice Input**: Web Audio API + ASR integration
+- **Voice Output**: Audio element with streaming support
+- **Animations**: Framer Motion for voice wave animations
+- **Real-time Updates**: WebSocket support for live interactions
 - **Form Handling**: React Hook Form with Zod validation
-- **Component Libraries**: Radix UI primitives
-- **Styling**: Tailwind CSS with custom plugins
-- **Testing**: Jest, React Testing Library
-- **Deployment**: Vercel
 
-### Backend (JavaScript)
-- **Framework**: Node.js with Express
-- **Database**: MongoDB with Mongoose
-- **Authentication**: JWT
-- **API Documentation**: RESTful APIs
-- **Environment Management**: dotenv
-- **Text-to-Speech**: ElevenLabs API
-- **Security**: bcryptjs for password hashing
-- **CORS**: Cross-origin resource sharing
-- **Testing**: Jest, Supertest
-- **Validation**: Express validator
+### Backend (JavaScript/Node.js)
+- **Framework**: Express.js
+- **Runtime**: Node.js
+- **ASR APIs**: Deepgram SDK & AssemblyAI SDK
+- **TTS API**: Murf Falcon API (production-grade speech synthesis)
+- **AI**: Google Gemini API for NLP and response generation
+- **Authentication**: JWT tokens with secure storage
+- **Environment**: dotenv for secure credential management
+- **Validation**: Express-validator for input sanitization
+- **Logging**: Winston for comprehensive logging
 
-### AI Services (Python & TypeScript)
-- **Primary AI Service**: Python with FastAPI
-- **Secondary AI Service**: Node.js with Express (deprecated)
-- **AI Models**: Google Gemini API
-- **Data Visualization**: Matplotlib, Seaborn, Pandas
-- **NLP Processing**: google-generativeai, @google/generative-ai
-- **Environment Management**: python-dotenv, dotenv
-- **Web Server**: Uvicorn (Python), Express (Node.js)
-- **Testing**: Pytest (Python), Jest (Node.js)
+### AI & NLP
+- **Primary AI Model**: Google Gemini 2.0 Flash
+- **Speech-to-Text**: Deepgram or AssemblyAI
+- **Text-to-Speech**: Murf Falcon TTS (main requirement)
+- **Sentiment Analysis**: Integrated in Gemini responses
+- **Context Management**: Conversation memory in database
+
+### Database
+- **Primary**: MongoDB (conversation history, user data)
+- **Caching**: Session-based conversation context
+- **Backup**: Automatic MongoDB Atlas backups
 
 ## External APIs & Services
 
-### Google Gemini API
-- **Purpose**: Natural language processing and AI responses
-- **Models Used**: 
-  - `gemini-pro` for text generation
-  - `gemini-2.0-flash-exp` for enhanced performance
-- **Integration Points**: 
-  - Frontend chat widget
-  - Backend chat controller
-  - Python AI service
-- **Rate Limits**: 100 requests/minute
-- **Latency**: ~500-1200ms average
-
-### ElevenLabs API
-- **Purpose**: Text-to-speech for voice responses
+### Murf Falcon TTS API (Primary Requirement)
+- **Purpose**: Real-time, production-grade Text-to-Speech synthesis
 - **Features**:
-  - Natural sounding voice synthesis
-  - Multiple voice options
-  - Customizable voice settings
-  - Streaming audio support
-- **Integration Points**:
-  - Backend chat controller
-  - Frontend voice assistant
-- **Rate Limits**: 50 requests/minute
-- **Latency**: ~800-1500ms average
+  - Natural, human-like voice output
+  - Multiple voice options with different tones
+  - Real-time streaming audio generation
+  - Low-latency processing (<500ms typical)
+  - Customizable speech parameters (speed, pitch, emotion)
+- **Integration**: Direct API calls from backend
+- **Rate Limits**: Free tier credits available for hackathon
+- **Documentation**: https://www.murf.ai/api
+- **Key Advantages**: Industry-leading voice quality, perfect for voice-first applications
+
+### Speech Recognition APIs (Deepgram OR AssemblyAI)
+
+#### Deepgram (Recommended)
+- **Purpose**: Automatic Speech Recognition (ASR) for speech-to-text
+- **Features**:
+  - Real-time transcription with low latency
+  - 99.9% accuracy
+  - Multiple language support
+  - Speaker diarization
+  - Free credits available for hackathon
+- **Integration**: WebSocket connection from frontend or REST API
+- **Rate Limits**: Generous free tier allocation
+- **Documentation**: https://developers.deepgram.com
+
+#### AssemblyAI (Alternative)
+- **Purpose**: Accurate speech-to-text with rich NLP features
+- **Features**:
+  - Entity recognition and PII redaction
+  - Sentiment analysis
+  - Auto chapters
+  - Free credits available for hackathon
+- **Integration**: REST API with webhook support
+- **Documentation**: https://www.assemblyai.com/docs
+
+### Google Gemini API
+- **Purpose**: Natural Language Understanding and response generation
+- **Model**: Gemini 2.0 Flash for faster processing
+- **Features**:
+  - Intent recognition
+  - Context understanding
+  - Multi-turn conversation support
+  - Sentiment analysis capabilities
+- **Integration Points**: Backend processing of ASR output
+- **Rate Limits**: Standard free tier
 
 ### MongoDB Atlas
-- **Purpose**: Database for user data, chat history, and service records
+- **Purpose**: Store conversation history and user context
 - **Features**:
-  - Cloud-hosted MongoDB
-  - Scalable document storage
-  - Real-time data access
-  - Automatic backups
-- **Integration Points**:
-  - Backend database layer
-- **Performance**: ~20-50ms average query time
+  - Cloud-hosted NoSQL database
+  - Automatic scaling
+  - Real-time backups
+- **Retention**: Conversation data for session continuity
 
 ## Project Structure
 
@@ -189,43 +251,92 @@ prostent/
 
 ## Environment Variables
 
+All API keys and sensitive credentials must be stored in environment variables and never hardcoded in the application.
+
 ### Backend (.env)
 ```env
+# Node.js Environment
+NODE_ENV=development
+PORT=3000
+
 # MongoDB Configuration
 MONGODB_URI=mongodb+srv://prostent:prostent99@cluster0.jry2x4n.mongodb.net/?appName=Cluster0
 MONGODB_DB_NAME=prostent
 
-# Application Settings
-NODE_ENV=development
-PORT=3000
+# JWT Authentication
+JWT_SECRET=prostent_secret_key_for_hackathon
 
-# JWT Secret
-JWT_SECRET=prostent_secret_key
-
-# Gemini API Configuration
+# Google Gemini API (for NLP and response generation)
 GEMINI_API_KEY=your_gemini_api_key_here
-GEMINI_MODEL=gemini-pro
+GEMINI_MODEL=gemini-2.0-flash
 
-# ElevenLabs API Configuration
-ELEVEN_LABS_API_KEY=your_eleven_labs_api_key_here
+# Murf Falcon TTS API (REQUIRED - Main TTS Provider)
+MURF_API_KEY=your_murf_api_key_here
+MURF_API_URL=https://api.murf.ai/v1
+
+# Speech Recognition - Choose one:
+
+# Option 1: Deepgram ASR
+DEEPGRAM_API_KEY=your_deepgram_api_key_here
+
+# Option 2: AssemblyAI ASR (alternative)
+ASSEMBLYAI_API_KEY=your_assemblyai_api_key_here
+
+# Application Settings
+MAX_CONVERSATION_LENGTH=10
+CONVERSATION_TIMEOUT=3600000
 ```
 
 ### Frontend (.env)
 ```env
-# Gemini API Configuration
-VITE_GEMINI_API_KEY=your_gemini_api_key_here
+# API Endpoint Configuration
 VITE_BACKEND_URL=http://localhost:3000
+VITE_API_TIMEOUT=30000
 
-# Application Settings
-NODE_ENV=development
-PORT=5173
+# Optional: Frontend Gemini API (if needed for local processing)
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+
+# Application Environment
+VITE_ENV=development
 ```
 
-### AI Service Python (.env)
+### AI Service Python (.env) - Optional
 ```env
-GEMINI_API_KEY=your_gemini_api_key_here
+# Python FastAPI Service Configuration
 PORT=8001
+NODE_ENV=development
+
+# APIs
+GEMINI_API_KEY=your_gemini_api_key_here
+MURF_API_KEY=your_murf_api_key_here
+DEEPGRAM_API_KEY=your_deepgram_api_key_here
 ```
+
+### Getting API Keys
+
+1. **Murf Falcon TTS**
+   - Sign up at https://www.murf.ai
+   - Apply for hackathon free credits
+   - API Key will be provided in dashboard
+
+2. **Deepgram (Recommended for ASR)**
+   - Sign up at https://console.deepgram.com
+   - Hackathon participants get free credits
+   - Create API key in console
+
+3. **AssemblyAI (Alternative for ASR)**
+   - Sign up at https://www.assemblyai.com
+   - Free credits available for hackathon
+   - Get API token from dashboard
+
+4. **Google Gemini API**
+   - Get free API key at https://ai.google.dev/
+   - Use in free tier for development
+
+5. **MongoDB Atlas**
+   - Create account at https://www.mongodb.com/cloud/atlas
+   - Create free cluster
+   - Get connection string
 
 ## Comprehensive Benchmarking Results
 
@@ -547,5 +658,6 @@ The Python AI service includes advanced data visualization capabilities:
 - Automated deployment pipelines
 - Version control with Git
 - Backward compatibility assurance
-- Regular security patches#   P r o s t e n t - a i  
+- Regular security patches#   P r o s t e n t - a i 
+ 
  
