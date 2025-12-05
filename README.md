@@ -26,6 +26,7 @@ Prostent demonstrates a practical implementation where users can speak natural l
 - Context-aware interactions with conversation memory
 
 ## Key Features
+<img width="1571" height="570" alt="image" src="https://github.com/user-attachments/assets/eeacb1b8-c2df-4fd9-a93e-a35a31f6b436" />
 
 ### Voice Processing Core
 - **Automatic Speech Recognition (ASR)** - Deepgram API for real-time speech-to-text conversion
@@ -660,4 +661,5 @@ The Python AI service includes advanced data visualization capabilities:
 - Version control with Git
 - Backward compatibility assurance
 - Regular security patches#
+
 
