@@ -14,30 +14,30 @@ const Index = () => {
   const features = [
     {
       icon: Zap,
-      title: "Real-time AI Responses",
-      description: "Get instant answers in under 3 seconds with advanced natural language processing"
+      title: "Murf Falcon TTS Integration",
+      description: "Deliver production-grade, natural voice generation with industry-leading speed."
     },
     {
       icon: MessageSquare,
-      title: "Sentiment-Aware Conversations",
-      description: "AI that understands emotions and adapts responses for better customer experience"
+      title: "Real-Time Speech Generation",
+      description: "Ensure interactive, low-latency performance essential for live voice conversations."
     },
     {
       icon: Globe,
-      title: "35+ Languages Support",
-      description: "Break language barriers with multilingual AI support available 24/7"
+      title: "Focus on Natural Voice",
+      description: "Create meaningful voice-driven experiences with human-like intonation and clarity."
     },
     {
       icon: Shield,
-      title: "Seamless CRM Integration",
-      description: "Connect with existing systems for unified customer data management"
+      title: "Functional Voice Prototype",
+      description: "Demonstrate effective utilization of the TTS API across various application domains."
     }
   ];
 
   const stats = [
-    { value: "71%", label: "Queries Auto-Resolved", icon: CheckCircle },
-    { value: "30%", label: "Cost Reduction", icon: TrendingUp },
-    { value: "80%", label: "Faster Response Time", icon: Clock }
+    { value: "95%", label: "Speech Realism Score", icon: CheckCircle },
+    { value: "100%", label: "Prototype Completion", icon: TrendingUp },
+    { value: "80%", label: "Latency Below 200ms", icon: Clock }
   ];
 
   const customerBenefits = [
@@ -109,14 +109,14 @@ const Index = () => {
               transition={{ duration: 0.8 }}
               className="text-5xl md:text-7xl font-bold text-white leading-tight"
             >
-              Transform After-Sales Support with{" "}
+              Building Voice-Driven Apps with{" "}
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
                 className="text-secondary"
               >
-                AI Intelligence
+                Falcon TTS API
               </motion.span>
             </motion.h1>
             
@@ -126,7 +126,7 @@ const Index = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto"
             >
-              Revolutionize your customer service with sentiment-aware AI that understands, responds, and resolves in real-time
+              Showcasing the power of **Murf Falcon Text-to-Speech** for fast, interactive, and meaningful voice-based solutions.
             </motion.p>
             
             <motion.div
@@ -159,10 +159,10 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
-              Meet Your AI Assistant
+              Prototype Your Voice Application
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our intelligent AI agent is ready to help you. You can talk to it and book services anytime.
+              Utilize the Falcon API to create functional, real-time voice experiences for any chosen use case.
             </p>
           </div>
 
