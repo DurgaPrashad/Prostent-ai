@@ -1,9 +1,12 @@
 # Prostent - Murf Voice Agent AI Platform
 
+## Demo & Media
+- **Demo Video**: [Watch on Google Drive](https://drive.google.com/file/d/1iJgD1-hVoQq1QHgKG7IUfjNyREHOXmBA/view?usp=sharing)
+- **Audio Sample**: [prostent_Speech_audio.mp3](https://github.com/user-attachments/files/23988616/prostent_Speech_audio.mp3)
+
 ## Team Details
 - **Team Name**: Prostent
 - **Team Leader**: Pakala Durga Prashad Reddy
-- **Hackathon**: Murf Voice Agent Hackathon - Techfest IIT Bombay
 - **Use Case**: Voice-First Customer Service Assistant
 
 ## Project Overview
@@ -26,12 +29,15 @@ Prostent demonstrates a practical implementation where users can speak natural l
 - Context-aware interactions with conversation memory
 
 ## Key Features
+<img width="1571" height="570" alt="image" src="https://github.com/user-attachments/assets/eeacb1b8-c2df-4fd9-a93e-a35a31f6b436" />
 
 ### Voice Processing Core
 - **Automatic Speech Recognition (ASR)** - Deepgram API for real-time speech-to-text conversion
 - **Real-time Text-to-Speech** - Murf Falcon TTS for natural, production-grade voice synthesis
 - **Low-Latency Voice Pipeline** - End-to-end processing optimized for interactive experiences
 - **Natural Voice Output** - Multiple voice options via Murf Falcon with customizable parameters
+<img width="936" height="805" alt="image" src="https://github.com/user-attachments/assets/68e376de-e940-4147-8712-aecc8ebdf9ab" />
+
 
 ### Conversational AI
 - **Context-Aware Responses** - Conversation memory and semantic understanding
@@ -793,6 +799,9 @@ The Python AI service includes advanced data visualization capabilities:
 - Automated deployment pipelines
 - Version control with Git
 - Backward compatibility assurance
-- Regular security patches#   P r o s t e n t - a i 
- 
- 
+- Regular security patches#
+
+
+
+
+
