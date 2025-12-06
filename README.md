@@ -3,7 +3,6 @@
 ## Team Details
 - **Team Name**: Prostent
 - **Team Leader**: Pakala Durga Prashad Reddy
-- **Hackathon**: Murf Voice Agent Hackathon - Techfest IIT Bombay
 - **Use Case**: Voice-First Customer Service Assistant
 
 ## Project Overview
@@ -661,5 +660,6 @@ The Python AI service includes advanced data visualization capabilities:
 - Version control with Git
 - Backward compatibility assurance
 - Regular security patches#
+
 
 
