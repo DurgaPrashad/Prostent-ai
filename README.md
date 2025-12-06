@@ -1171,7 +1171,7 @@ For questions or issues regarding this voice agent:
 
 **Made for Murf Voice Agent Hackathon at Techfest IIT Bombay** 🎤🤖
 
-Last Updated: 2024
+Last Updated: 2025
 
 
 
